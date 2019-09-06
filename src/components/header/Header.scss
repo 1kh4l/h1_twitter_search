@@ -1,0 +1,33 @@
+@import '../../assets/styles/_colors.scss';
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  .toolbar {
+    background-color: $main-color;
+  }
+
+  .react-logo {
+    animation: app-logo-spin infinite 20s linear;
+    height: 50px;
+    pointer-events: none;
+  }
+
+  .h1-logo {
+    height: 45px;
+    border-radius: 50%;
+    padding: 2px;
+    background-color: white;
+  }
+
+  @keyframes app-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

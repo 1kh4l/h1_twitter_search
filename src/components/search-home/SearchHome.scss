@@ -1,0 +1,9 @@
+@import '../../assets/styles/_colors.scss';
+.home {
+  background-color: $main-color;
+  .grid-home {
+    .grid-results {
+      padding-top: 30px;
+    }
+  }
+}

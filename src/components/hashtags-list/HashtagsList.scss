@@ -1,0 +1,31 @@
+@import '../../assets/styles/_colors.scss';
+.hashtags-list {
+  width: 245px;
+  .grid-container {
+    .hashtags {
+      width: 100%;
+      padding: 20px 10px 20px 20px;
+      .card-hashtags {
+        .bar {
+          .title{
+            text-align: left;
+            margin: 5px 0px 5px 5px;
+          }
+        }
+        .container-hashtags {
+          background-color: $main-color;
+        }
+      }
+    }
+  }
+}
+
+.title-hashtag {
+  margin: 5px;
+  color: white;
+}
+
+.title-ocurrences {
+  margin: 5px;
+  color: #90caf9;
+}
