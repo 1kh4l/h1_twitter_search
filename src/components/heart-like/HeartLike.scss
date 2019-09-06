@@ -1,0 +1,14 @@
+.heart {
+  svg {
+    cursor: pointer;
+    overflow: visible;
+    width: 40px;
+    #heart {
+      transform-origin: center;
+      animation:animateHeartOut .3s linear forwards;
+    }
+    #main-circ {
+      transform-origin:29.5px 29.5px;
+    }
+  }
+}

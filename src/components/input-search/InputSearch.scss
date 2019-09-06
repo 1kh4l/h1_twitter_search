@@ -1,0 +1,24 @@
+@import '../../assets/styles/_colors.scss';
+.input-search {
+  width: 36%;
+  .input {
+    .MuiFormLabel-root {
+      color: white;
+    }
+    .MuiInputBase-input {
+      color: white;
+    }
+    .MuiOutlinedInput-notchedOutline {
+      border-color: $main-color;
+    }
+    .MuiOutlinedInput-root:hover {
+      
+      .MuiOutlinedInput-notchedOutline {
+        border-color: white !important;
+      }
+    }
+    .MuiFormHelperText-contained {
+      color: white;
+    }
+  }
+}
