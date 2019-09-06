@@ -36,7 +36,7 @@ class ResultsList extends Component {
   onFetchFromTwitter = (search) => {
     const GET_TWEETS = `
       {
-        tweets(searchParam:${search}, limit: 5) {
+        tweets(searchParam:${search}, limit: 100) {
           results {
             id
             text
