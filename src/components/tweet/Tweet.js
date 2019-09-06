@@ -9,7 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import { Icon } from '@iconify/react';
 import twitterRetweet from '@iconify/icons-mdi/twitter-retweet';
 
-
+/*
+ *  Tweet component.
+ */
 const Tweet = (props) => {
   const data = props.entity;
   const user = data.user;

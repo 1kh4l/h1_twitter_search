@@ -4,8 +4,9 @@ import './InputSearch.scss';
 import {connect} from 'react-redux';
 import * as actionTypes from '../../store/actions';
 
-
-
+/*
+ *  Input search component.
+ */
 class InputSearch extends Component {
 
   render() {
@@ -27,13 +28,18 @@ class InputSearch extends Component {
   };
 }
 
-
+/*
+ *  Store props mapping.
+ */
 const mapStateToProps = state => {
     return {
         search: state.search
     }
 };
 
+/*
+ *  Store actions.
+ */
 const mapDispatchToProps = dispatch => {
     return {
         onSearch: (e) => dispatch({type: actionTypes.SEARCH_TWEETS, text: e.target.value })

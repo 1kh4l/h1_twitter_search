@@ -3,6 +3,9 @@ import './HashtagsList.scss';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 
+/*
+ *  Hashtags' list component.
+ */
 const HashtagsList = (props) => {
   return (
     <div className="hashtags-list">

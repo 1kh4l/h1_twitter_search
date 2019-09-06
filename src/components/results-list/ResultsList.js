@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './TweetsList.scss';
+import './ResultsList.scss';
 import Tweet from './../tweet/Tweet';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
@@ -8,12 +8,15 @@ import {connect} from 'react-redux';
 import HashtagsList from './../hashtags-list/HashtagsList';
 import * as actionTypes from '../../store/actions';
 
+/*
+ *  GraphQl api url.
+ */
 const axiosGraphqlAPI = axios.create({
   // baseURL: 'http://localhost:3000/graphql',
   baseURL: 'https://salty-tundra-04338.herokuapp.com/graphql',
 });
 
-class TweetsList extends Component {
+class ResultsList extends Component {
   tweets = [];
 
   componentDidMount() {
@@ -27,10 +30,13 @@ class TweetsList extends Component {
     }
   }
 
+  /*
+   * It fetchs the data from the graphql api. 
+   */
   onFetchFromTwitter = (search) => {
     const GET_TWEETS = `
       {
-        tweets(searchParam:${search}, limit: 100) {
+        tweets(searchParam:${search}, limit: 5) {
           results {
             id
             text
@@ -56,9 +62,13 @@ class TweetsList extends Component {
    axiosGraphqlAPI
       .post('', { query: GET_TWEETS })
       .then(result => {
-        this.tweets = result.data.data.tweets.results;
-        this.props.onSetHashtags(result.data.data.tweets.topHashtags);
-        this.forceUpdate();
+        if (result.data) {
+          if (result.data.hasOwnProperty('data')) {
+            this.tweets = result.data.data.tweets.results;
+            this.props.onSetHashtags(result.data.data.tweets.topHashtags);
+            this.forceUpdate();
+          }
+        }
       });
   };
 
@@ -69,7 +79,7 @@ class TweetsList extends Component {
           <div className="tweets">
             <Card className="card-tweets">
               <div className="bar">
-                <h6 className="title">HOME</h6>
+                <h6 className="title">TOP 100 ~TWEETS</h6>
               </div>
               <div className="container-list">
                 {this.tweets.map( tweet=>
@@ -85,6 +95,9 @@ class TweetsList extends Component {
   };
 }
 
+/*
+ *  Store props mapping.
+ */
 const mapStateToProps = state => {
     return {
         search: state.search,
@@ -92,9 +105,12 @@ const mapStateToProps = state => {
     }
 };
 
+/*
+ *  Store actions.   
+ */
 const mapDispatchToProps = dispatch => {
     return {
         onSetHashtags: (hashtags) => dispatch({type: actionTypes.SET_HASHTAGS, hashtags })
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(TweetsList);
+export default connect(mapStateToProps, mapDispatchToProps)(ResultsList);
