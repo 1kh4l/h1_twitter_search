@@ -1,7 +1,7 @@
 import React from 'react';
 import './HeartLike.scss';
 
-const HeartLike = (props) => {
+const HeartLike = (props: unknown) => {
   return (
     <div className="heart">
       <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">

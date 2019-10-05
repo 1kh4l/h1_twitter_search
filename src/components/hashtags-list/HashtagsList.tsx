@@ -3,10 +3,19 @@ import './HashtagsList.scss';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 
+interface Hashtag {
+  name: string,
+  ocurrences: number
+}
+
+interface Props {
+  list: Array<any>;
+  className: string;
+}
 /*
  *  Hashtags' list component.
  */
-const HashtagsList = (props) => {
+const HashtagsList: React.SFC<Props> = (props) => {
   return (
     <div className="hashtags-list">
       <Grid container direction="column" justify="center" alignItems="center" className="grid-container">

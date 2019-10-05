@@ -4,10 +4,13 @@ import InputSearch from './../input-search/InputSearch';
 import ResultsList from './../results-list/ResultsList';
 import Grid from '@material-ui/core/Grid';
 
+interface Props {
+  className?: string;
+}
 /*
  *  Home page component.
  */
-const SearchHome = (props) => {
+const SearchHome: React.SFC<Props> = (props) => {
   return (
     <div className="home">
       <Grid container direction="column" alignItems="center" className="grid-home">

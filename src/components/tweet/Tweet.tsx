@@ -9,10 +9,13 @@ import Typography from '@material-ui/core/Typography';
 import { Icon } from '@iconify/react';
 import twitterRetweet from '@iconify/icons-mdi/twitter-retweet';
 
+interface Props {
+  entity?: any;
+}
 /*
  *  Tweet component.
  */
-const Tweet = (props) => {
+const Tweet: React.FC<Props> = (props) => {
   const data = props.entity;
   const user = data.user;
   const tweetUrl = `https://twitter.com/${user.account}/status/${data.id}`
@@ -25,7 +28,7 @@ const Tweet = (props) => {
               <Avatar alt="test" src={user.photoUrl}/>
             </ListItemAvatar>
           </div>
-          <div className="tweet-info" href={tweetUrl}>
+          <div className="tweet-info">
             <Grid container direction="column" justify="flex-start" alignItems="flex-start" className="user">
               <div className="user-container">
                 <Grid container direction="row" justify="flex-start" alignItems="flex-start" className="info">

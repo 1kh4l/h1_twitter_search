@@ -1,2 +1,0 @@
-export const SEARCH_TWEETS = 'SEARCH_TWEETS';
-export const SET_HASHTAGS = 'SET_HASHTAGS';

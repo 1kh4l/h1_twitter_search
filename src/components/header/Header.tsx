@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import './Header.scss';
 
-const Header = (props) => {
+const Header = (props: unknown) => {
   return (
     <div className="header">
       <AppBar position="static">
