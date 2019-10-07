@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import './InputSearch.scss';
 import { connect } from 'react-redux';
-import { SearchState } from '../../types/index';
+import { SearchState, SearchActionTypes } from '../../types/index';
 import { searchTweets } from '../../store/search/actions/index';
+import { Dispatch, AnyAction, bindActionCreators } from 'redux';
 
 type ReduxType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 
@@ -11,9 +12,8 @@ type ReduxType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispa
  *  Input search component.
  */
 class InputSearch extends Component<ReduxType> {
-
-  public onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.props.onSearch(e.target.value);
+  onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.props.searchTweets(e.target.value);
   }
   render() {
     return (
@@ -34,22 +34,22 @@ class InputSearch extends Component<ReduxType> {
   };
 }
 
-interface SearchProps {
-  search?: string;
-}
-
 /*
  *  Store props mapping.
  */
-const mapStateToProps = (state: SearchState, ownProps: SearchProps) => ({
+const mapStateToProps = (state: SearchState) => ({
   search: state.search
 });
 
 /*
  *  Store actions.
  */
-const mapDispatchToProps = () => ({
-  onSearch: searchTweets
-});
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) =>
+  bindActionCreators(
+    {
+      searchTweets
+    },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(InputSearch);

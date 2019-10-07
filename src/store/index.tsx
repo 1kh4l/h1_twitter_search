@@ -1,13 +1,13 @@
 import { createStore, combineReducers, Store } from 'redux';
-import { searchReducer } from './search/reducers/index'
-import { SearchState } from '../types/index';
+import { searchReducer } from './search/reducers/index';
 
 const rootReducer = combineReducers({
-  search: searchReducer,
+  search: searchReducer
 })
 
 const store: Store = createStore(
   rootReducer  
 );
 
+export type AppState = ReturnType<typeof rootReducer>;
 export default store;

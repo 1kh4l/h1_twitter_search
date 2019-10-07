@@ -1,5 +1,4 @@
-import React, { Component }  from 'react';
-import { SearchState } from './../../types/index';
+import React from 'react';
 import './App.scss';
 import Header from './../header/Header';
 import SearchHome from './../search-home/SearchHome';

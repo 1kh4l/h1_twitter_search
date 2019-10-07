@@ -18,7 +18,6 @@ interface Props {
 const Tweet: React.FC<Props> = (props) => {
   const data = props.entity;
   const user = data.user;
-  const tweetUrl = `https://twitter.com/${user.account}/status/${data.id}`
   return (
     <div className="tweet-card">
       <Card>

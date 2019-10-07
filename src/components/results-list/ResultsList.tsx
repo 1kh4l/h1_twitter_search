@@ -7,13 +7,10 @@ import Card from '@material-ui/core/Card';
 import {connect} from 'react-redux';
 import HashtagsList from './../hashtags-list/HashtagsList';
 import { SearchState } from '../../types/index';
+import { AppState } from '../../store';
 import { setHashtags } from '../../store/search/actions/index';
 
 type ReduxType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
-
-interface IState {
-  search: string;
-}
 
 /*
  *  GraphQl api url.
@@ -27,11 +24,10 @@ class ResultsList extends Component<ReduxType> {
   tweets: Array<any> = [];
 
   componentDidMount() {
-    console.log('testing.....');
     this.onFetchFromTwitter('hackerOne');
   };
 
-  componentDidUpdate({ search: prevSearch }: ReduxType, prevState: IState){
+  componentDidUpdate({search: prevSearch}: SearchState){
     const { search } = this.props;
     if(search !== prevSearch){
       this.onFetchFromTwitter(search);
@@ -96,25 +92,22 @@ class ResultsList extends Component<ReduxType> {
               </div>
             </Card>
           </div>
-          <HashtagsList className="hashtag-list" list={this.props.hashtags || []}/>
+          <HashtagsList className="hashtag-list" list={this.props.hashtags}/>
         </Grid>
       </div>
     );
   };
 }
 
-interface SearchProps {
-  search?: string;
-  hashtags?: Array<any>;
-}
-
 /*
  *  Store props mapping.
  */
-const mapStateToProps = (state: SearchState, ownProps: SearchProps) => ({
-  search: state.search,
-  hashtags: state.hashtags
-});
+const mapStateToProps = ({search: state}: AppState) => {
+  return {
+    search: state.search,
+    hashtags: state.hashtags
+  }
+};
 
 /*
  *  Store actions.
